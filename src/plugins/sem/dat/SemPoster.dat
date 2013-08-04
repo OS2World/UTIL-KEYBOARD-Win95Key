@@ -1,0 +1,3 @@
+Plugin Volume=Event Semaphore poster,1
+HELPTEXT=This plugin posts any given event semaphore.|Input Semaphone name
+TYPE=SELECTOR,DESCR=Semaphore Name, MANDATORY=1, VALUE=\SEM32\SYSTRAY\WARPBTN,VALUE0=1,VALUES=\SEM32\SYSTRAY\WARPBTN

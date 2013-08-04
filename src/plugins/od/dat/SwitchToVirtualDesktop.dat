@@ -1,0 +1,3 @@
+Plugin Volume=Controls OS/2 MM Volume,1
+HELPTEXT=Specify desktop number.^Use "+" to select next desktop, or "-" to select previos Desktop
+TYPE=SELECTOR,DESCR=Desktop number, MANDATORY=1, VALUE=,VALUE0=11,VALUES=1|2|3|4|5|6|7|8|9|-|+

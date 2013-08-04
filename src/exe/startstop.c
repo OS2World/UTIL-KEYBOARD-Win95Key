@@ -14,7 +14,7 @@ int w95kStartup(void)
       ProfileClose();
       return(-1);
     }
-    
+
   if(PluginInit()!=0)
     { WinPerror("Can't initialize", "Can't initialize plugins");
       ModifierFree();
@@ -37,18 +37,24 @@ int w95kStartup(void)
       ProfileClose();
       return(-1);
     }
-    
 
-  ProfileQueryParams();  
-  
+  if(SemSet()!=0)
+    { WinPerror("Can't initialize", "Can't register semaphore");
+      PluginFree();
+      ModifierFree();
+      ProfileClose();
+      return(-1);
+    }
+
+  ProfileQueryParams();
+
   if(firstTime)
+
     { if(w95kAddItemsToSysmenu()!=0)
         { WinPerror("Error", "Can't add items to sysmenu");
           return(-1);
         }
     }
-  
-  
   WinCheckMenuItem(hwndMenu, MENU_PRESS, mainParams.onKeyPress);
   WinCheckMenuItem(hwndMenu, MENU_HIDE, mainParams.Hide);
   WinCheckMenuItem(hwndSysSubMenu, MENU_PRESS, mainParams.onKeyPress);
@@ -77,18 +83,21 @@ int w95kStartup(void)
   return(0);
 }
 
-int w95kShutdown(void)
-{ if(ProfileOpen()==0)
-    { ProfileSaveParams();
-      ProfileClose();
+int w95kShutdown(int SavePars)
+{ if(SavePars)
+    { if(ProfileOpen()==0)
+        { ProfileSaveParams();
+          ProfileClose();
+        }
     }
 
   HookRemove();
+  SemRemove();
 
   ModifierFree();
   PluginFree();
   EventFree();
-  
+
   return(0);
 }
 

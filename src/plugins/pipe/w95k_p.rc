@@ -1,0 +1,6 @@
+#include <os2.h>
+
+ICON       1 PRELOAD w95k_p.ico
+
+RESOURCE 100 1 LOADONCALL FIXED dat\dll.dat 
+RESOURCE 100 2 LOADONCALL FIXED dat\SendToPipe.dat

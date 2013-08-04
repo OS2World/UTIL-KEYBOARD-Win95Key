@@ -1,4 +1,4 @@
-Plugin OpenObject=Opens an object or launch program
+Plugin OpenObject=Opens an object or launch program,2
 HELPTEXT=
-TYPE=INPUTFIELD,DESCR=Path to the program or object's name, MANDATORY=1, VALUE='', DRAG=1
+TYPE=INPUTFIELD,DESCR=Path or object name, MANDATORY=1, VALUE='', DRAG=1
 TYPE=SELECTOR,DESCR=Type Of View, MANDATORY=0, VALUE=DEFAULT,VALUE0=9,VALUES=DEFAULT|HELP|PALETTE|PROMPTDLG|RUNNING|SETTINGS|TREE|CONTENTS|DETAILS

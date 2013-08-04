@@ -1,0 +1,3 @@
+Plugin Volume=This plugin control OS/2 Advanced Power Managment system,1
+HELPTEXT=With this plugin you can turn off your pc or use standby mode. Confirmation will be promted
+TYPE=SELECTOR,DESCR=Select mode:, MANDATORY=1, VALUE=,VALUE0=3,VALUES=STANDBY|SUSPEND|POWER_OFF

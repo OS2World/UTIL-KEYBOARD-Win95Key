@@ -1,5 +1,5 @@
 #include "../w95k.h"
-
+HMTX    hmtxsem;
 struct PendingEvent
 { int scancode;
   struct Event e;
@@ -11,16 +11,16 @@ int ProcessKey(MPARAM mp1, MPARAM mp2)
   unsigned char scancode;
   unsigned char character;
   int virtualKey;
-  
+
   static struct PendingEvent pendingEvent={-1};
-  
+
   struct Event *pe, e;
   ULONG p;
   TID tidFoo;
 
   int retval=1;
 
-  
+
   flags=SHORT1FROMMP(mp1);
   repeat=CHAR3FROMMP(mp1);
   scancode=CHAR4FROMMP(mp1);
@@ -28,11 +28,9 @@ int ProcessKey(MPARAM mp1, MPARAM mp2)
   virtualKey=SHORT2FROMMP(mp2);
 
   pe=NULL;
-
   if(!mainParams.onKeyPress)
     { /*Process key releases*/
       ModifierSet(scancode, flags, 0);
-      
       if(EventFindFoo(scancode, flags, &e)==0)
         { retval=0;
           if((flags & KC_KEYUP) &&                     /*And key released               */
@@ -49,8 +47,9 @@ int ProcessKey(MPARAM mp1, MPARAM mp2)
     { /*Process key presses*/
       if(EventFindFoo(scancode, flags, &e)==0)
         { retval=0;
-          if(((flags & KC_KEYUP)==0) &&                /*And key pressed          */
-             ((flags & KC_PREVDOWN)==0) )              /*And key pressed only once*/
+          if(((flags & KC_KEYUP)==0)                /*And key pressed          */
+             && ((flags & KC_PREVDOWN)==0)  /*And key pressed only once*/
+             )
             { if(ModifierSet(scancode, flags, 1)==1)
                 { /*Modifier*/
                   pendingEvent.scancode=scancode;

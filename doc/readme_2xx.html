@@ -1,0 +1,874 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+   <meta name="GENERATOR" content="Mozilla/4.61 [en] (OS/2; U) [Netscape]">
+   <title>win95key</title>
+</head>
+<body text="#000044" bgcolor="#EEEEEE" link="#0000EE" vlink="#CC66CC" alink="#FF0000">
+
+<h1>
+Win95Key v2</h1>
+10x to :
+<br>Samuel Audet guardia@cam.org for original idea
+<br>Dmitry Ban for event processing idea
+<br>Sergey Yevtushenko for help with WarpCenter's sizes
+<h2>
+0. What it is</h2>
+win95key is a small program that enable <font color="#666666">&lt;unused></font>
+keys on your keyboard when you're working with OS/2 pm. For example you
+can make the <b><font color="#663366">left windoze key</font></b> to open
+Warp Center menu or <b><font color="#663366">key with an arrow pointed
+at broken window</font></b> to launch netscape. With this program you can
+map almost any key combination to any action you want. It provides standard
+way both for adding the new functionality and for the keyboard events mapping
+as well. You can use almost any keyboards with almost any keys. If you're
+programmer you can create your own plug ins with your own logic.
+<h2>
+1. What's bad</h2>
+Unfortunately i don't have enough time to develop PM configuration frontend
+for it. But i hope that there's somebody who will create any. ;)
+<blockquote>In fact <a href="mailto:samm@os2.ru">Alex Samorukov</a> have
+created very useful configuration tool. It still beta so we're waiting
+for his kindly permission to publish it.</blockquote>
+
+<h2>
+2. Installation</h2>
+Just unzip to the any directory and run win95key.exe
+<h2>
+3. Customization</h2>
+The main idea is that keyboard combinations are linked to "actions" and
+"actions" are mapped to pieces of the code imported from "plugin" DLLs.
+As soon as we're working with OS/2 we have to use "OS/2 way" so I decide
+to use standard OS2 INI file to store settings. I don't know why but name
+of this file is always "win95key.INI". I use regedit2.exe tool included
+in Warp 4 FP5 or later to edit it; but there are a lot of tools to edit
+OS/2 INI files. This INI file consists of three sections:
+<h3>
+3.0. First one - "PLUGINS"</h3>
+contains action names linked to plug ins. For example following entry in
+PLUGINS section will create action "OpenObject" from dll "w95k_std.dll",
+entry "OpenObject" :
+<br><img SRC="plugins.gif" height=226 width=675>
+<br>You may use dll entries numbers as well as names. You may use full
+path to dll as well as relative.
+<h3>
+3.1. Second section - "MODIFIERS"</h3>
+describes special keys treated as modifiers in addition to standard Ctrl,
+Alt and Shift. Syntax is simple : modifier_name=modifier_scancode
+<p>For example if you want to use left windoze key as modifier with the
+name LWIN, just create following entry in "MODIFIERS" section :
+<br><img SRC="modifiers.gif" height=160 width=533>
+<br>Where 0x mean hexadecimal notation (126 in Dec)
+<br>You can omit scancode (just set it to 0) for 'standard' keys. Just
+use mnemonic name, for example A for 'A' key. You can find special mnemonic
+names in 3.3.
+<h3>
+3.2. Third (and last) section - "KEYS"</h3>
+contains actual key assignments. Name of the entry describe key combination
+in the following format : <b><tt><font color="#660000">[&lt;Modifier>[+&lt;Modifier>[...]]&amp;]&lt;scancode></font></tt></b>&nbsp;
+where each of the modifiers have to be described in "MODIFIERS" section
+except standard Ctrl, Alt and shift. <b>Remember that all modifiers' names
+but standard are case sensitive</b>. &lt;scancode> is the scancode for
+key used to invoke event. You may also use mnemonic name of the desired
+key, such as A for 'A' key. Please find the spesial mnemonic names in 3.3.
+Value of each entry contains action from "PLUGINS" section with the optional
+parameters in quotes. Multiple parameters are separated by commas. For
+example entry to launch netscape by pressing LWIN+N may look like :
+<br><img SRC="keys.gif" height=186 width=894>
+<br>&nbsp;
+<h3>
+3.3. Names of the special keys</h3>
+<b>Warning</b>: these keys was tested on usual ms keyboard so your keyboard
+may differ. Please use included tool "showkey" if these definitions doesn't
+work.
+<br>&nbsp;
+<table>
+<tr BGCOLOR="#000000">
+<td>
+<center><table WIDTH="100%" BGCOLOR="#FFFFFF" >
+<tr BGCOLOR="#FFFFFF">
+<td>Name</td>
+
+<td>Key</td>
+</tr>
+
+<tr>
+<td>Esc</td>
+
+<td>Esc key</td>
+</tr>
+
+<tr>
+<td>F1-F12</td>
+
+<td>F keys</td>
+</tr>
+
+<tr>
+<td>ScrollLock</td>
+
+<td>Scroll Lock key</td>
+</tr>
+
+<tr>
+<td>Pause</td>
+
+<td>Pause key</td>
+</tr>
+
+<tr>
+<td>k1-k0</td>
+
+<td>Numeric keys on the main part of the keyboard</td>
+</tr>
+
+<tr>
+<td>BackSpace</td>
+
+<td>BackSpace key</td>
+</tr>
+
+<tr>
+<td>CapsLock</td>
+
+<td>Caps lock key</td>
+</tr>
+
+<tr>
+<td>LShift</td>
+
+<td>Left shift</td>
+</tr>
+
+<tr>
+<td>RShift</td>
+
+<td>Right shift</td>
+</tr>
+
+<tr>
+<td>LCtrl</td>
+
+<td>Left ctrl</td>
+</tr>
+
+<tr>
+<td>RCtrl</td>
+
+<td>Right ctrl</td>
+</tr>
+
+<tr>
+<td>LAlt</td>
+
+<td>Left alt</td>
+</tr>
+
+<tr>
+<td>RAlt</td>
+
+<td>Right alt</td>
+</tr>
+
+<tr>
+<td>LWin</td>
+
+<td>Left windoze key</td>
+</tr>
+
+<tr>
+<td>RWin</td>
+
+<td>Right windoze key</td>
+</tr>
+
+<tr>
+<td>WinMenu</td>
+
+<td>Key with the mouse pointer pointed to the broken window</td>
+</tr>
+
+<tr>
+<td>s_left</td>
+
+<td>Left arrow key on the little keypad between main keyboard and numeric
+keypad</td>
+</tr>
+
+<tr>
+<td>s_right</td>
+
+<td>Right arrow key on the little keypad between main keyboard and numeric
+keypad</td>
+</tr>
+
+<tr>
+<td>s_up</td>
+
+<td>Up arrow key on the little keypad between main keyboard and numeric
+keypad</td>
+</tr>
+
+<tr>
+<td>s_down</td>
+
+<td>Down arrow key on the little keypad between main keyboard and numeric
+keypad</td>
+</tr>
+
+<tr>
+<td>s_ins</td>
+
+<td>Insert key on the little keypad between main keyboard and numeric keypad</td>
+</tr>
+
+<tr>
+<td>s_home</td>
+
+<td>Home key on the little keypad between main keyboard and numeric keypad</td>
+</tr>
+
+<tr>
+<td>s_del</td>
+
+<td>Delete key on the little keypad between main keyboard and numeric keypad</td>
+</tr>
+
+<tr>
+<td>s_end</td>
+
+<td>End key on the little keypad between main keyboard and numeric keypad</td>
+</tr>
+
+<tr>
+<td>s_pgUp</td>
+
+<td>Page Up key on the little keypad between main keyboard and numeric
+keypad</td>
+</tr>
+
+<tr>
+<td>s_pgDn</td>
+
+<td>Page Down key on the little keypad between main keyboard and numeric
+keypad</td>
+</tr>
+
+<tr>
+<td>NumLock</td>
+
+<td>Num Lock key on the numeric keypad</td>
+</tr>
+
+<tr>
+<td>Home</td>
+
+<td>Home key on the numeric keypad</td>
+</tr>
+
+<tr>
+<td>End</td>
+
+<td>End key on the numeric keypad</td>
+</tr>
+
+<tr>
+<td>Up</td>
+
+<td>Up arrow key on the numeric keypad</td>
+</tr>
+
+<tr>
+<td>Down</td>
+
+<td>Down arrow key on the numeric keypad</td>
+</tr>
+
+<tr>
+<td>Left</td>
+
+<td>Left arrow key on the numeric keypad</td>
+</tr>
+
+<tr>
+<td>Right</td>
+
+<td>Right arrow key on the numeric keypad</td>
+</tr>
+
+<tr>
+<td>PgUp</td>
+
+<td>Page Up key key on the numeric keypad</td>
+</tr>
+
+<tr>
+<td>PgDn</td>
+
+<td>Page Down key on the numeric keypad</td>
+</tr>
+
+<tr>
+<td>Ins</td>
+
+<td>Insert key on the numeric keypad</td>
+</tr>
+
+<tr>
+<td>Del</td>
+
+<td>Delete key on the numeric keypad</td>
+</tr>
+
+<tr>
+<td>Center</td>
+
+<td>'5' key on the numeric keypad</td>
+</tr>
+
+<tr>
+<td>BigEnter</td>
+
+<td>Main enter key</td>
+</tr>
+
+<tr>
+<td>SmallEnter</td>
+
+<td>Enter key on the numeric keypad</td>
+</tr>
+
+<tr>
+<td>Plus</td>
+
+<td>Plus key on the numeric keypad</td>
+</tr>
+
+<tr>
+<td>Minus</td>
+
+<td>Minus key on the numeric keypad</td>
+</tr>
+
+<tr>
+<td>Space</td>
+
+<td>Space key</td>
+</tr>
+</table></center>
+</td>
+</tr>
+</table>
+
+<h2>
+4. Plugins</h2>
+
+<h3>
+4.1. Standard plugin library</h3>
+At the moment just one plugin library is supplied with win95key.exe. It
+contains five foo you can use. Here's a brief description :
+<table WIDTH="100%" >
+<tr BGCOLOR="#000000">
+<td>
+<table BORDER=0 WIDTH="100%" BGCOLOR="#EEEEEE" >
+<caption><b><font color="#EEEEFF">w95k_std.dll plugin library</font></b></caption>
+
+<tr BGCOLOR="#CCCCCC">
+<td ROWSPAN="2"><b>Entry name</b></td>
+
+<td ROWSPAN="2"><b>Entry number</b></td>
+
+<td ROWSPAN="2"><b>Description</b></td>
+
+<td ROWSPAN="2"><b>Number of the parameters</b></td>
+
+<td COLSPAN="2"><b>Parameters</b></td>
+</tr>
+
+<tr BGCOLOR="#CCCCCC">
+<td><b>Is mandatory</b></td>
+
+<td><b>Description</b></td>
+</tr>
+
+<tr>
+<td>SwitchTo</td>
+
+<td>1</td>
+
+<td>Switch to (bring up) window</td>
+
+<td>1</td>
+
+<td>Yes</td>
+
+<td>Title of the window to make active</td>
+</tr>
+
+<tr>
+<td>WindowList</td>
+
+<td>2</td>
+
+<td>Shows the window list</td>
+
+<td>0</td>
+
+<td COLSPAN="2">&nbsp;</td>
+</tr>
+
+<tr>
+<td>DesktopMenu</td>
+
+<td>3</td>
+
+<td>Shows the desktop's context menu</td>
+
+<td>1</td>
+
+<td>No</td>
+
+<td>Desktop's title</td>
+</tr>
+
+<tr>
+<td>ContextMenu</td>
+
+<td>4</td>
+
+<td>Shows the context menu of the current application</td>
+
+<td>0</td>
+
+<td COLSPAN="2">&nbsp;</td>
+</tr>
+
+<tr>
+<td>WarpcenterMenu</td>
+
+<td>5</td>
+
+<td>Shows the WarpCenter's menus</td>
+
+<td>1</td>
+
+<td>Yes</td>
+
+<td>Describes action to perform. Allowed values are :&nbsp;
+<table WIDTH="100%" >
+<tr BGCOLOR="#EEEEFF">
+<td><b><font size=-2>Value</font></b></td>
+
+<td><b><font size=-2>Action</font></b></td>
+</tr>
+
+<tr BGCOLOR="#FFFFFF">
+<td><font size=-2>MENU</font></td>
+
+<td><font size=-2>Show WarpCenter's OS/2WARP menu</font></td>
+</tr>
+
+<tr BGCOLOR="#FFFFFF">
+<td><font size=-2>WINDOWLIST</font></td>
+
+<td><font size=-2>Show WarpCenter's window list</font></td>
+</tr>
+
+<tr BGCOLOR="#FFFFFF">
+<td><font size=-2>LOCKUP</font></td>
+
+<td><font size=-2>Desktop lockup</font></td>
+</tr>
+
+<tr BGCOLOR="#FFFFFF">
+<td><font size=-2>FIND</font></td>
+
+<td><font size=-2>Find an object</font></td>
+</tr>
+
+<tr BGCOLOR="#FFFFFF">
+<td><font size=-2>SHUTDOWN</font></td>
+
+<td><font size=-2>Warpcenter's system shutdown</font></td>
+</tr>
+
+<tr BGCOLOR="#FFFFFF">
+<td><font size=-2>INFO</font></td>
+
+<td><font size=-2>Switch WarpCenter's information pane</font></td>
+</tr>
+
+<tr BGCOLOR="#FFFFFF">
+<td><font size=-2>TRAYS</font></td>
+
+<td><font size=-2>WarpCenter's trays select menu</font></td>
+</tr>
+
+<tr BGCOLOR="#FFFFFF">
+<td><font size=-2>CLOCK</font></td>
+
+<td><font size=-2>Switch WarpCenter's clock mode</font></td>
+</tr>
+
+<tr BGCOLOR="#FFFFFF">
+<td><font size=-2>PROPERTIES</font></td>
+
+<td><font size=-2>WarpCenter's properties</font></td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr>
+<td ROWSPAN="3">OpenObject</td>
+
+<td ROWSPAN="3">6</td>
+
+<td ROWSPAN="3">Opens an object or launch program</td>
+
+<td ROWSPAN="3">3</td>
+
+<td>Yes</td>
+
+<td>Object name or path</td>
+</tr>
+
+<tr>
+<td>No</td>
+
+<td>Type of view. Allowed values are :
+<table WIDTH="100%" >
+<tr BGCOLOR="#EEEEFF">
+<td><b><font size=-2>Value</font></b></td>
+</tr>
+
+<tr BGCOLOR="#FFFFFF">
+<td><font size=-2>HELP</font></td>
+</tr>
+
+<tr BGCOLOR="#FFFFFF">
+<td><font size=-2>PALETTE</font></td>
+</tr>
+
+<tr BGCOLOR="#FFFFFF">
+<td><font size=-2>PROMPTDLG</font></td>
+</tr>
+
+<tr BGCOLOR="#FFFFFF">
+<td><font size=-2>RUNNING</font></td>
+</tr>
+
+<tr BGCOLOR="#FFFFFF">
+<td><font size=-2>SETTINGS</font></td>
+</tr>
+
+<tr BGCOLOR="#FFFFFF">
+<td><font size=-2>TREE</font></td>
+</tr>
+
+<tr BGCOLOR="#FFFFFF">
+<td><font size=-2>CONTENTS</font></td>
+</tr>
+
+<tr BGCOLOR="#FFFFFF">
+<td><font size=-2>DETAILS</font></td>
+</tr>
+</table>
+If you'll omit this parameter, default view type will be used</td>
+</tr>
+
+<tr>
+<td>No</td>
+
+<td>"NEWVIEW" will always open new view, any other or no parameter will
+use object's settings</td>
+</tr>
+
+<tr>
+<td>Volume</td>
+
+<td>7</td>
+
+<td>Controls OS/2 MM Volume</td>
+
+<td>1</td>
+
+<td>Yes</td>
+
+<td>Up or Down</td>
+</tr>
+
+<tr>
+<td>MinimizeAll</td>
+
+<td>8</td>
+
+<td>Minimize all windows</td>
+
+<td>Variable</td>
+
+<td>No</td>
+
+<td>Exceptions list. Titles of the windows that won't be minimized</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<h3>
+4.2. Create your own!</h3>
+It's easy to create your own plugin dll. You just have to create usual
+dll with set of functions using the following template :
+<p><tt><font color="#009900">void</font> <font color="#006600">EXPENTRY</font><font color="#000099">PluginFoo</font>(<font color="#009900">int</font>
+argc, <font color="#009900">char *</font> argv[])</tt>
+<br><tt>{ <font color="#006600">HMQ</font> hmqLocal<font color="#FF0000">=</font><font color="#993300">NULLHANDLE</font>;</tt>
+<p><tt>&nbsp; hmqLocal<font color="#FF0000">=</font><font color="#000099">WinCreateMsgQueue</font>(<font color="#000099">WinQueryAnchorBlock</font>(<font color="#993300">HWND_DESKTOP</font>),
+0);</tt>
+<p><tt>&nbsp; <font color="#000099">WinMessageBox</font>(<font color="#993300">HWND_DESKTOP</font><font color="#000000">,</font><font color="#993300">HWND_DESKTOP</font>,
+<b><font color="#993366">"Hello
+world!"</font></b>, <b><font color="#993366">"PluginFoo"</font></b>, 11,</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<font color="#993300">MB_OK</font> | <font color="#993300">MB_MOVEABLE</font>
+| <font color="#993300">MB_INFORMATION</font>);</tt>
+<p><tt>&nbsp; if(hmqLocal<font color="#CC0000">!=</font><font color="#993300">NULLHANDLE</font>)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; { <font color="#000099">WinDestroyMsgQueue</font>(hmqLocal);</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; }</tt>
+<br><tt>}</tt>
+<h2>
+5. Tools for configuration and troubleshooting</h2>
+As soon as i didn't develop any frontend for this it's not <b>too</b> easy
+to customize ;) But i include some useful tools such as tool which will
+help you to find scancode for your favorite key. Just run showkey.exe and
+press this key - it's so easy :
+<br><img SRC="key_info.gif" height=236 width=599>
+<br>Please remember that if this utility doesn't show scancode of your
+favorite key, it mean that your key is not supported by os/2. Usually it
+happens if your keyboard is not supported by \OS2\BOOT\KBDBASE.SYS; for
+example if this file was replaced by process commander. Please use Process
+Commander in WatchCat mode if you want to use win95key together with Process
+Commander. Unfortunately at the moment i have at least one report about
+keyboard with keys that are not supported by os/2 keyboard driver
+<h2>
+6. License, responsibility and so on.</h2>
+This program is freeware. This program is also my property. You can't change
+or use the sources (included). On the other hand if you have any idea how
+to improve it or have found a bug feel free to contact me. And of course
+there are no such things as any warranties. You may use this program for
+free but I'm not responsible for any data/hardware/health/anything else
+loss and/or damage.
+<h2>
+7. Contacts</h2>
+You can reach me by <a href="mailto:vik@avi.kiev.ua?Subject=w95k;v2">mail
+: vik@avi.kiev.ua</a>. I will place new versions to <a href="http://vik.avi.kiev.ua/software.phtml">my
+home page http://vik.avi.kiev.ua/software.phtml</a> but connections there
+are <b>very</b> slow. Sorry.
+<h2>
+8. History</h2>
+
+<table>
+<tr>
+<td>0.21</td>
+
+<td>ctrl-shift-left.win.key=shutdown system
+<br>remove.cmd - uninstall script added</td>
+</tr>
+
+<tr>
+<td>0.23</td>
+
+<td>Russian support added</td>
+</tr>
+
+<tr>
+<td>0.25</td>
+
+<td>Spanish support added
+<br>(Jordi Nadal i F bregas &lt;jornadal@redestb.es>)
+<br>install/remove scripts modified
+<br>(Louis Mckinley &lt;Mckinley.Louis@ic.gc.ca>)</td>
+</tr>
+
+<tr>
+<td>0.26</td>
+
+<td>Dutch support added
+<br>(Daniel Jacobs)</td>
+</tr>
+
+<tr>
+<td>0.27&nbsp;</td>
+
+<td>NLS</td>
+</tr>
+
+<tr>
+<td>0.29&nbsp;</td>
+
+<td>NLS</td>
+</tr>
+
+<tr>
+<td>0.30&nbsp;</td>
+
+<td>Minor bug fixed</td>
+</tr>
+
+<tr>
+<td>0.31&nbsp;</td>
+
+<td>Feature added</td>
+</tr>
+
+<tr>
+<td>0.32&nbsp;</td>
+
+<td>Italian support added. (Sergio Trovarelli&nbsp;<sergio@mclink.it>)</td>
+</tr>
+
+<tr>
+<td>2.0 b1</td>
+
+<td>First 2.0 beta</td>
+</tr>
+
+<tr>
+<td>2.0 b2</td>
+
+<td>Key processing algorithm changed</td>
+</tr>
+
+<tr>
+<td>2.0 b3</td>
+
+<td>Menu added. Re-read config added</td>
+</tr>
+
+<tr>
+<td>2.0 b4</td>
+
+<td>realloc/free bug</td>
+</tr>
+
+<tr>
+<td>2.0 b5</td>
+
+<td>Key processing algorithm changed</td>
+</tr>
+
+<tr>
+<td>2.0 b6</td>
+
+<td>Mnemonic names added. Semaphore removed.</td>
+</tr>
+
+<tr>
+<td>2.0 b7</td>
+
+<td>OpenObject plugin semaphore added</td>
+</tr>
+
+<tr>
+<td>2.0 b8</td>
+
+<td>OpenObject plugin message removed. Memory allocation for event firing
+thread added (shame on me). Semaphore removed.</td>
+</tr>
+
+<tr>
+<td>2.0 b9</td>
+
+<td>Mod. names now case independent. A lot of little bugs fixed. Window
+pos and size saving added. Volume foo added.</td>
+</tr>
+
+<tr>
+<td>2.0 b10-b12</td>
+
+<td>Reload doesn't 'free' modifiers buffer. A lot of bugs fixed.</td>
+</tr>
+
+<tr>
+<td>2.0 b13-b14</td>
+
+<td>Attempt to 'free' unallocated memory (sys3175).&nbsp;
+<br>Doesn't 'free' allocated memory. &lt;g>
+<br>Conflicts with PMMail, Netscape etc. fixed. (os/2 sucks)&nbsp;
+<br>Object desktop dll added but still not working ;)&nbsp;
+<br>And (as usual) a lot of minor bugs fixed, such as 'k6^' instead 'k6'
+<br><a href="samm@os2.ru>" Alex Samorukov's</A>PM configuration tool added!</a></td>
+</tr>
+
+<tr>
+<td>2.0 b15</td>
+
+<td>New parameter - use key presses instead releases. It tells w95k to
+fire event on key down instead default behavior (event fires when key releases)
+<br>Binaries has been moved to 'bin' dir (by Alex)
+<br>A lot of new bugs added ;)
+<br>Workaround for OpenObject foo (opened object was not at the top, move
+manually)</td>
+</tr>
+
+<tr>
+<td>2.0 b16</td>
+
+<td>Minor bug : event firing for released keys when configured to use key
+presses instead releases.</td>
+</tr>
+
+<tr>
+<td>2.0 b17</td>
+
+<td>New parameter for OpenObject plugin</td>
+</tr>
+
+<tr>
+<td>2.0</td>
+<td>"File" menu items added to system menu.</td>
+</tr>
+
+<tr>
+<td>2.10</td>
+<td>New foo MinimizeAll added
+<br>Minor bug (trap 0e and hdd crash) fixed //Just kidding of course ;)</td>
+</tr>
+
+<tr>
+<td>2.11</td>
+<td>
+Re-read configuration on WM_USER+11 (for PMConf)
+</td>
+</tr>
+
+<tr>
+<td>2.2</td>
+<td>
+The plugin SendToPipe is added which allows to send the text defined by user 
+to the specified pipe when the predefined key event is activated. This feature 
+can be useful for controlling the programs which support pipe control (for 
+example Z! MP3 Player).
+</td>
+</tr>
+
+<tr>
+<td>2.3</td>
+<td>
+The SwitchTo plugin is rewritten. The cyclic switch and template search features 
+are added. The templates can be specified even by means of regular expressions.
+For details see help to the SwitchTo plugin in the PmConf tool. Thanks to 
+Nick Lepehin for code.
+<br><br>
+The WarpCenterMenu plugin is adapted for correct work under eCS. I can't figure 
+out why did the authors decide to change the name of the warpcenter but 
+now everything should be OK.
+</td>
+</tr>
+
+</table>
+
+<p>Best regards
+<br><a href="mailto:vik@avi.kiev.ua?Subject=w95k;v2">Vik</a>
+</body>
+</html>

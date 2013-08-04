@@ -1,0 +1,9 @@
+LIBRARY W95K_APM
+
+DESCRIPTION 'Win95Key plugin dll for APM. (C) Samm'
+
+PROTMODE
+
+
+EXPORTS
+	ProcessAPM	@1

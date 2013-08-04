@@ -1,4 +1,4 @@
-Plugin DesktopMenu=Shows the desktop's context menu
+Plugin DesktopMenu=Shows the desktop's context menu,1
 HELPTEXT=
 TYPE=INPUTFIELD,DESCR=Desktop's title, MANDATORY=0, VALUE=''
 

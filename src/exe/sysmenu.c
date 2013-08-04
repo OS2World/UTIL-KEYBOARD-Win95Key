@@ -3,11 +3,13 @@
 
 HWND hwndSysMenu=NULLHANDLE, hwndSysSubMenu=NULLHANDLE;
 
+#define NEWITEMSCOUNT 7
+
 int w95kAddItemsToSysmenu(void)
 { struct mItem
   { MENUITEM item;
     char * text;
-  } additionalSysMenu[5];
+  } additionalSysMenu[NEWITEMSCOUNT];
   MENUITEM sysMenuItem, menuItemQueried;
   USHORT idSysMenu;
   register int i;
@@ -54,6 +56,22 @@ int w95kAddItemsToSysmenu(void)
   additionalSysMenu[4].item.hItem=0;
   additionalSysMenu[4].text="~Hide in task list";
 
+  additionalSysMenu[5].item.iPosition=MIT_END;
+  additionalSysMenu[5].item.afStyle=MIS_SEPARATOR;
+  additionalSysMenu[5].item.afAttribute=0;
+  additionalSysMenu[5].item.id=0;
+  additionalSysMenu[5].item.hwndSubMenu=NULL;
+  additionalSysMenu[5].item.hItem=0;
+  additionalSysMenu[5].text="";
+
+  additionalSysMenu[6].item.iPosition=MIT_END;
+  additionalSysMenu[6].item.afStyle=MIS_TEXT;
+  additionalSysMenu[6].item.afAttribute=0;
+  additionalSysMenu[6].item.id=MENU_ABOUT;
+  additionalSysMenu[6].item.hwndSubMenu=NULL;
+  additionalSysMenu[6].item.hItem=0;
+  additionalSysMenu[6].text="~About";
+
 
   hwndSysMenu=WinWindowFromID(hwndMain, FID_SYSMENU);
   if(hwndSysMenu==NULLHANDLE)
@@ -75,7 +93,7 @@ int w95kAddItemsToSysmenu(void)
      itemCount=(SHORT)WinSendMsg(hwndSysSubMenu, MM_QUERYITEMCOUNT, MPFROMLONG(0), MPFROMLONG(0));
    }
   
-  for(i=0;i<5;i++)
+  for(i=0;i<NEWITEMSCOUNT;i++)
    { sRes=(SHORT)WinSendMsg(hwndSysSubMenu, MM_INSERTITEM, (MPARAM)&additionalSysMenu[i].item, (MPARAM)additionalSysMenu[i].text);
      if(sRes==MIT_ERROR)
        { return(-1);

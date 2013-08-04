@@ -1,0 +1,9 @@
+LIBRARY W95K_P
+
+DESCRIPTION 'Win95Key plugin dll for Pipe. (C) Samm'
+
+PROTMODE
+
+
+EXPORTS
+	SendToPipe	@1

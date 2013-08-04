@@ -1,0 +1,3 @@
+Plugin MinimizeAll=Minimize all windows,1
+HELPTEXT=Specify in Exceptions list titles of the windows that won't be minimized
+TYPE=INPUTFIELD,DESCR=Exceptions list, MANDATORY=0, VALUE=''

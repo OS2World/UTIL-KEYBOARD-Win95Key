@@ -1,7 +1,7 @@
 #include "../w95k.h"
 
 
-char pchVersion=VERSION;
+char *pchVersion=VERSION;
 
 HWND hTargetWin=NULLHANDLE;
 

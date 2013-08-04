@@ -1,4 +1,4 @@
-#define VERSION "Win95Key 2.10\n(C)'1996-2000 vik@avi.kiev.ua"
+#define VERSION "Win95Key 3.00\n(C)'1996-2003 Win95key Team"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,6 +25,7 @@
 #define INCL_DOSERRORS
 #define INCL_DOSSESMGR
 #define INCL_REXXSAA
+#define INCL_DOSSEMAPHORES
 
 #include <os2.h>
 
@@ -34,11 +35,14 @@ extern HAB habMain;
 extern HWND hwndMain, hwndClient, hwndMenu;
 extern HWND hwndSysMenu, hwndSysSubMenu;
 
+#define SEMNAME "\\SEM32\\WIN95KEY\\RUNNING"
+extern HMTX hmtxsem; 
+
 MRESULT EXPENTRY w95kWindowProc(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2);
 
 
 int w95kStartup(void);
-int w95kShutdown(void);
+int w95kShutdown(int SavePars);
 
 extern char ErrorBuffer[2048];
 void WinPerror(char * Title, char * Text);
@@ -143,11 +147,11 @@ VOID APIENTRY EventStart(ULONG p);
 int HookSet(void);
 int HookRemove(void);
 
+int SemSet(void);
+int SemRemove(void);
 
 int Char2Scan(char * ChrName);
 char * Scan2Char(int scancode);
-
-
 
 #define MENU_REREADCFG 330
 #define MENU_EXIT      331

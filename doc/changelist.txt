@@ -1,0 +1,150 @@
+3.09
+
+Plugin Volume rewritten. Added possibility to use MCI or LBMIX API. Also
+added MUTE command
+
+Added keyboard defeinition file (keyboard.def) to allow pmconf work correctly
+with special keyboards.
+
+kbdfixd now can call watchcat (undocumented, need to touch this code later)
+
+Changed font in pm_conf to warpsans
+
+Now pm_conf tryes to use relative path when adding new plugins.
+
+3.0
+First 3.0.
+Little changes in pmconf.
+
+3.0a1.
+APM plugin added for controling OS/2 power managment.
+
+Added new packet - KBDfix, which allow to correct detection of some keys,
+not recognized by PM (see doc)
+
+SemPoster plugin added.
+
+Now win95key create mutex semaphore (\\SEM32\\WIN95KEY\\RUNNING) on startup
+and check it on every key event. If it is own by another process win95key
+will not process keyboard event. I use it in pmconf to detect key scancodes 
+even if they are assigned to events.
+
+Many corrections of pmconf tool. 
+
+Documentation rewritten.
+
+Installation script changed.
+
+Added key-names for "Power", "Sleep" and "WakeUp" keys.
+
+2.3 
+The SwitchTo plugin is rewritten. The cyclic switch and template search 
+features are added. The templates can be specified even by means of regular 
+expressions. For details see help to the SwitchTo plugin in the PmConf tool. 
+Thanks to Nick Lepehin for code and Vadim Yegorov for PCRE porting.
+
+The WarpCenterMenu plugin is adapted for correct work under eCS. I can't figure
+out why did the authors decide to change the name of the warpcenter but now 
+everything should be OK.
+
+2.2 
+The plugin SendToPipe is added which allows to send the text defined by user 
+to the specified pipe when the predefined key event is activated. This feature 
+can be useful for controlling the programs which support pipe control 
+(for example Z! MP3 Player).
+
+2.11 
+Re-read configuration on WM_USER+11 (for PMConf)
+
+2.10 
+New foo MinimizeAll added
+Minor bug (trap 0e and hdd crash) fixed //Just kidding of course ;)
+
+2.0 
+"File" menu items added to system menu.
+
+2.0 
+b17 New parameter for OpenObject plugin
+
+2.0 b16 
+Minor bug : event firing for released keys when configured to use key 
+presses instead releases.
+
+2.0 b15 
+New parameter - use key presses instead releases. It tells w95k to fire 
+event on key down instead default behavior (event fires when key releases)
+Binaries has been moved to 'bin' dir (by Alex)
+A lot of new bugs added ;)
+Workaround for OpenObject foo (opened object was not at the top, move manually)
+
+2.0 b13-b14 
+Attempt to 'free' unallocated memory (sys3175). 
+Doesn't 'free' allocated memory. <g>
+Conflicts with PMMail, Netscape etc. fixed. (os/2 sucks) 
+Object desktop dll added but still not working ;) 
+And (as usual) a lot of minor bugs fixed, such as 'k6^' instead 'k6'
+PM configuration tool added!
+
+2.0 b10-b12 
+Reload doesn't 'free' modifiers buffer. A lot of bugs fixed.
+
+2.0 b9 
+Mod. names now case independent. A lot of little bugs fixed. Window pos and size
+saving added. Volume foo added.
+
+2.0 b8 
+OpenObject plugin message removed. Memory allocation for event firing thread 
+added (shame on me). Semaphore removed.
+
+2.0 b7 
+OpenObject plugin semaphore added
+
+2.0 b6 
+Mnemonic names added. Semaphore removed.
+
+2.0 b5 
+Key processing algorithm changed
+
+2.0 b4 
+realloc/free bug
+
+2.0 b3 
+Menu added. Re-read config added
+
+2.0 b2 
+Key processing algorithm changed
+
+2.0 b1 
+First 2.0 beta
+
+0.32  
+Italian support added. (Sergio Trovarelli )
+
+0.31  
+Feature added
+
+0.30  
+Minor bug fixed
+
+0.29  
+NLS
+
+0.27  
+NLS
+
+0.26 
+Dutch support added
+(Daniel Jacobs)
+
+0.25 
+Spanish support added
+(Jordi Nadal i F bregas <jornadal@redestb.es>)
+install/remove scripts modified
+(Louis Mckinley <Mckinley.Louis@ic.gc.ca>)
+
+0.23 
+Russian support added
+
+0.21 
+ctrl-shift-left.win.key=shutdown system
+remove.cmd - uninstall script added

@@ -37,7 +37,8 @@ HWND findByClassName(HWND hwnd, char * className)
 
 
 void EXPENTRY SwitchToVirtualDesktop(int argc, char * argv[])
-{ HWND hwndCc;
+{
+  HWND hwndCc;
   HAB habMain;
   HMQ hmqLocal=NULLHANDLE;
   HSWITCH hswCc, hswDesk;

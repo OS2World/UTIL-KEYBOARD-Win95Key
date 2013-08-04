@@ -1,3 +1,3 @@
-Plugin SwitchTo=Switch to (bring up) window
-HELPTEXT=
+Plugin SwitchTo=Switch to (bring up) window,1
+HELPTEXT=This plugin allows to call the specified window.^ ^ Windows which correspond to the template are switched cyclically. You can specify the template in two ways:^ ^1) Usual way: "string1|string2|string3|string..."^^The plugin will look for windows containing either string1 or string2 or string... If "string1" has the form "*text" (begins with the "*" character) the plugin checksfor the substring "text" in window header. If "string1" is "text" (i.e. first character is other than "*") then first symbols of the header are compared with "text" string (i.e. whether the header begins with this substring "text") Limitation: First symbol in string1 can not be '/' (see the next item).^ ^2) by means of specifying regular expressions: "/string" (the search template begins with /). In this case the plugin will look for all headers which correspond to the Regexp template. The support for regular expressions is provided by the Pcre library.
 TYPE=INPUTFIELD,DESCR=Title of the window, MANDATORY=1, VALUE=''

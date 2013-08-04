@@ -1,6 +1,7 @@
 LIBRARY W95K_STD
+STACKSIZE   30000
 
-DESCRIPTION 'Win95Key std plugin dll. (C) vik@avi.kiev.ua'
+DESCRIPTION 'Win95Key std plugin dll. (C) vik@avi.kiev.ua, nickk@nm.ru, samm@os2.ru.'
 
 PROTMODE
 

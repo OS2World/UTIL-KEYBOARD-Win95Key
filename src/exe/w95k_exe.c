@@ -59,7 +59,7 @@ int main (int argc, char * argv[])
    { WinDispatchMsg(habMain, &Message);
    }
 
-  w95kShutdown();
+  w95kShutdown(1);
   
   
   WinDestroyMsgQueue(hmqMain);

@@ -1,0 +1,56 @@
+/*
+ * Define the RCDATA structure
+ */
+ 
+#ifndef PMEXE_RCDATA_RC_INCLUDED
+#define PMEXE_RCDATA_RC_INCLUDED
+
+/* RCDATA ID */
+
+#define PMEXE_RCDATA_ID 65432
+
+/* Min version of VX-REXX required */
+
+#ifndef PMEXE_MIN_VERSION_LEVEL
+#define PMEXE_MIN_VERSION_LEVEL 210
+#endif
+
+/* Timeout period in seconds */
+
+#ifndef PMEXE_TIMEOUT_INTERVAL
+#define PMEXE_TIMEOUT_INTERVAL 10
+#endif
+
+/* If this is non-zero, splash screen is hidden after the
+   DLL is loaded, otherwise it stays up for the timeout period */
+   
+#ifndef PMEXE_HIDE_AFTER_LOAD
+#define PMEXE_HIDE_AFTER_LOAD 1
+#endif
+
+/* ID of bitmap to display */
+
+#ifndef PMEXE_BITMAP_ID
+#define PMEXE_BITMAP_ID PMEXE_RCDATA_ID
+#endif
+
+/* If this is non-zero and no bitmap can be found, displays 
+   a simple message */
+   
+#ifndef PMEXE_DISPLAY_MESSAGE 
+#define PMEXE_DISPLAY_MESSAGE 1
+#endif
+
+/* This is the RCDATA that PMEXE looks for and loads */
+
+RCDATA PMEXE_RCDATA_ID
+BEGIN
+    12,
+    PMEXE_MIN_VERSION_LEVEL,
+    PMEXE_TIMEOUT_INTERVAL,
+    PMEXE_HIDE_AFTER_LOAD,
+    PMEXE_BITMAP_ID,
+    PMEXE_DISPLAY_MESSAGE
+END 
+
+#endif

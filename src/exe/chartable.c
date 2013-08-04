@@ -106,7 +106,10 @@ struct
                  { "del",        0x53 },
                  { "SmallEnter", 0x5A },
                  { "Plus",       0x4E },
-                 { "Minus",       0x4A },
+                 { "Minus",      0x4A },
+                 { "Power",      0xAE },
+                 { "Sleep",      0xAF },
+                 { "WakeUp",     0x89 },
                  { "\x2A",       0x37 },
                  { NULL,         0 }
                };
@@ -119,7 +122,7 @@ int Char2Scan(char * ChrName)
        { return(TransTable[i].Code);
        }
    }
-   
+
   return(0);
 }
 
@@ -134,7 +137,7 @@ char * Scan2Char(int scancode)
        { return(TransTable[i].Name);
        }
    }
-   
+
   return(NULL);
 }
 

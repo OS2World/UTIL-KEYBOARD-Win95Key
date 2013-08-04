@@ -1,3 +1,4 @@
-Plugin Volume=Controls OS/2 MM Volume
-HELPTEXT=Up or Down
-TYPE=SELECTOR,DESCR=Volume, MANDATORY=1, VALUE=,VALUE0=2,VALUES=UP|DOWN
+Plugin Volume=Controls OS/2 MM Volume,2
+HELPTEXT=This plugin allow you to change system volume.^ Use method 0 for MMOS2 MCI, 1 - for LBMIX PIPE API and 2 - for changing volume using "Main Volume" WPS object
+TYPE=SELECTOR,DESCR=Volume, MANDATORY=1, VALUE=,VALUE0=3,VALUES=UP|DOWN|MUTE
+TYPE=INPUTFIELD,DESCR=Method: 0=MCI 1=LBMIX 2=WPS, MANDATORY=1, VALUE='0'

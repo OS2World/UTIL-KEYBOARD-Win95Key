@@ -1,0 +1,9 @@
+LIBRARY W95K_SEM
+
+DESCRIPTION 'Win95Key plugin dll for semaphore posting. (C) Nickk'
+
+PROTMODE
+
+
+EXPORTS
+	SemPoster	@1

@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><HTML>
+<HEAD>
+   <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<STYLE>
+BODY,SPAN,TD,P{background-color:#EEEEEE;font-family:Helv,Verdana;font-size:8pt;
+     color:#000044;text-align:justify;}
+P{text-indent:6px;margin-top:0;}
+H4{margin-bottom:6px;}
+</STYLE>
+<TITLE>Win95Key v3</TITLE>
+</HEAD>
+<BODY>
+<h2>Win95Key v3</h2>
+
+<h3>1. About</h3>
+
+<p>This program is intended to assign actions on key pressing in OS/2 PM environment,
+It allows to use Windows specific keys and multimedia keyboards as well. For example,
+you can call WarpCenter menu by pressing <b>Windows</b> button or launch Mozilla by
+pressing <b>Ctrl-Shift-M</b>. The program is written in the way that allows to assign
+new actions easily and (for developers) to increase its functionality using plugin
+scheme. Starting from version&nbsp;3, the <b>kbdfix</b> utility is included in the
+package. It allows to use keys that do not return correct scancode in OS/2&nbsp;PM
+and cannot be used in OS/2 in standart manner (e.g. <b>Power</b> and <b>Sleep</b>
+buttons and some Multimedia buttons).
+
+<h3>2. Installation</h3>
+<p>
+To install the program extract the archive into any directory and run REXX script
+<tt>install.cmd</tt>. It will create "Win95Key" folder on your desktop. Brief
+description of folder content:<br><br>
+
+<TABLE summary="#" cellpadding="3" cellspacing="0" border="0">
+<TR>
+<TD>"<B>PM Conf Configuration program</B>"</TD>
+<td>- PM program for Win95Key configuration</td>
+</TR>
+<TR>
+<TD>"<B>Win 95 Key</B>"</TD>
+<td> - the program :-)</td>
+</TR>
+</TR>
+<TR>
+<TD>"<B>Tools</B>"</TD>
+<td> - utilities that can be useful (see below)</td>
+</TR>
+<TR>
+<TD>"<B>src</B>"</TD>
+<td> - source code of the project</td>
+</TR>
+</TABLE><!-- #  -->
+<br>
+<span style="color:red;">NB</span>: installation of Win95Key over existing old version
+can cause problems and therefore is not recommended.
+
+<h3>3. Configuration</h3>
+<p>
+Run <b>PM Conf</b> program to configure Win95Key. You can do this from Win95Key folder
+or by pressing <b>Ctrl-Shift-S</b> (Win95Key must be launched).
+<h4>3.1 PM Conf possibilities</h4>
+PM Conf allows to:
+ <ul type="square">
+  <li>show assigned key combinations, edit them and add new combinations;
+  <li>edit parameters of plugin assigned to key combination (plugin description is taken from its resources);
+  <li>support drag&amp;drop (e.g. in the OpenObject plugin);
+  <li>turn on and off plugins from external libraries;
+  <li>edit and assign scancodes for special keys (modifiers), e.g. LWIN;
+  <li>select multimedia keyboard model (from keyboard.def file) to show all scancodes as names correctly.
+  <li>reload Win95Key settings.
+</ul>
+<h4>3.2 Adding actions</h4>
+<p>
+After program launch you will see the "Hotkeys" tab. In this tab you may view the list of assigned
+key combinations and the actions assigned to these combinations.
+<p>
+To add new combination you have to:
+<ol>
+<li>Enter the key scancode or its name (e.g. "F") in the "Code" input field.
+<li>Select modifiers (e.g. Ctrl and Shift) for this key in the "Modifiers" field.
+Modifiers can be added or changed in the "Settings" tab. Do not mark any modifiers
+if you want to use scancode without modifiers.
+<li>Select plugin that you want to assign to this key combination in the "Plugin" window
+and press the "Settings" button. Plugins can be added or removed in the "Settings" tab.
+</ol><p>
+To edit a key combination select it in the "Hotkey" list, modify settings and
+press "Change button"
+<p>
+To remove a key combination select it in the "Hotkey" list and press the "Remove" button.
+<p>To apply the changes you have made press the "Apply" button.
+
+<h4>3.3 Adding/removing plugins</h4>
+<p>
+If you want to add a plugin press the button "Add new" in the plugin section of the "Settings" bookmark. Then in the dialog window press the "Locate" button and choose the DLL with plugins.
+<p>
+ In the "Add plugin" window there appears the plugin list stored in the chosen library.
+and press the "Add" button. After this the selected plugins will appear in the "Function" window.
+<p>
+ To delete a plugin select it in the "Function" window and press the "Remove" button.
+
+<h4>3.4 Adding modifiers</h4>
+<p>
+The "Modifiers" section describes the keys that are used in addition to standart
+"Ctrl", "Alt" and "Shift" modifiers. To add a modifier press the "Add new" button
+in the "Modifiers" section. Enter the scancode of the modifier and its name.
+New modifier will be available in the "Hotkeys" tab for adding new key combination.
+<br>
+To remove or edit modifier select it in the "Modifiers" window and press the "Remove"
+or "Edit" button.
+<h4>3.4 Changing Win95Key parameters</h4>
+<p>
+The "Global" section in the "Setting" tab contains 3 options that affect Win95Key's operation.
+<br>The "Immediately key reaction" option is responsible for program reaction on key pressing.
+If it is enabled, reaction takes place immediately after the corresponding keys were pressed.
+If it is disabled, reaction takes place after the corresponding keys were released.
+<br>If the "run minimized" option is enabled, Win95Key will be run minimized next launch.
+<br>If the "hide in tasklist" option is enabled,  Win95Key will not be shown in the OS/2 Window List.
+<p>
+You must press the "Apply" button after setup of these parameters.
+<h3>4. KBDfix utility</h3>
+<p>
+OS/2 does not recognize some keys on modern keyboards correctly. Win95Key
+cannot use these keys (e.g. "Power" and "Sleep"). KBDfix utility was written
+to provide a workaround for this system bug.
+<h4>4.1. Determing the scancode of "dead keys"</h4>
+<p>
+If your keyboard has some keys that are not recognized by PM&nbsp;Conf program
+and you want to use these keys in OS/2, you have to find out their scancodes that are
+returned by keyboard driver. To do this, launch "Keyboard DosMon* tester" from
+the <nobr>Win95Key &#8212;&gt; Tools</nobr> folder. After launch of the program
+press the keys that do not work in OS/2 and write down their scancodes (scan=xxx).
+Then open file <tt>kbdfix.cfg</tt> and add lines like <b>Key=xxx</b> to this file
+(xxx is the scancode for corresponding key). The number of these lines is not limited.
+By default <tt>kbdfix.cfg</tt> contains records for "Power" and "Sleep" keys already.
+<h4>4.2. Starting up daemon</h4>
+To launch KBDfix at system startup edit your <tt>config.sys</tt> file.
+Add a line like the following:
+<pre>
+RUN=D:\apps\Win95Key\bin\kbdfixd.exe
+</pre>
+(sure the correct path should be specified :) and reboot OS/2.
+<h4>4.3. Usage</h4>
+The keys listed in <tt>kbdfix.cfg</tt> file must be recognized correctly
+after system reboot. Edit <tt>kbdfix.cfg</tt> and run the
+"Reload KBDfixD configuration" utility from <nobr>Win95Key &#8211;&gt; Tools</nobr>
+folder to change KBDfix configuration without system reboot.
+<br><br>
+<span style="color:red">NB!</span>
+If this utility appears to be really useful to you, send your <tt>kbdfix.cfg</tt> file
+to <a href="mailto:samm@os2.ru">samm@os2.ru</a>, I will add your scancodes
+to standart package subsequently.
+<h3>5. Win95Key plugins</h3>
+At present Win95Key package contains several plugin libraries. Plugin library
+is a DLL with functions that can be assigned as action on key pressing. This section
+contains brief description of plugins and examples of plugin usage.
+<h4>5.1 w95k_std.dll library</h3>
+<ol>
+<li><B>SwitchTo</B> - switches to the task specified.<br>
+With this plugin one may call the required window. If more than one window match
+the pattern, they will be switched cyclically.
+<br>
+Search pattern can be specified in two ways:
+<ol>
+<li>simple way: "string1|string2|string3|string..."
+<br>
+This will search for windows with title that contains string1 or string2 or string...&nbsp;.
+<br>If stringI looks like <b>*text</b> then "text" substring is searched in window title.
+<br>If stringI looks like <b>text</b> (no leading asterisk) then the beginning of window title
+is compared with "text" (i.e. window title must begin with "text" to match).
+<br>Limitation: first symbol of window title can not be '/' (this is explained at point&nbsp;2)
+<li>using regular expressions: "/string" (search pattern starts with '/')
+<br>All window titles that match the search pattern are searched in this case.
+PCRE library is used for regexp implementation.
+</ol>
+<li><B>WindowList</B> - calls OS/2 Task List.
+<li><B>DesktopMenu</B> - calls context menu of Desktop. The name of your desktop
+is an optional parameter.
+<li><B>WarpcenterMenu</b> - plugin for operations with WarpCenter.
+<br>This plugin allows to operate WarpCenter using keyboard.
+ <ul type="square">
+ <li>MENU - calls "OS/2 Warp" menu of WarpCenter
+ <li>WINDOWLIST - calls Window List
+ <li>LOCKUP - calls OS/2 Lockup
+ <li>FIND - calls WarpCenter Search
+ <li>SHUTDOWN - OS/2 Shutdown
+ <li>INFO - swithes WarpCenter indicator
+ <li>TRAYS - changes current tray
+ <li>CLOCK - switches WarpCenter clock
+ <li>PROPERTIES - calls WarpCenter properties
+ </ul>
+<li><B>OpenObject</B> - opens WPS object or launches a program.
+<br>The name of the program (e.g. <tt>d:\os2\e.exe</tt>) or WPS object
+(e.g. <tt>&lt;WP_SYSTEM&gt;</tt>) must be specified. Also run parameters
+must be set. Acceptable values are: DEFAULT, HELP, PALETTE, PROMPTDLG, RUNNING,
+SETTINGS, TREE, CONTENTS, DETAILS
+<li><B>Volume</B> - manages main volume control. <br>
+You need to specify method (0 - MMOS2 MCI, 1 - LIBMIX PIPE API, 2 - WPS "Volume" object)
+and action UP , DOWN or MUTE.
+<li><b>MinimizeAll</b> - minimizes all windows.<br>
+Exceptions may be specified with comma delimiter.
+</ol>
+<h4>5.2. w95k_od.dll library</h4>
+<p><B>SwitchToVirtualDesktop</B> - changes active desktop in the Object Desltop program.
+</BODY></HTML>
+<h4>5.3. w95k_p.dll library</h4>
+<p><B>SendToPipe</B> - sends text to the pipe specified by user.
+<br>With this function one may easily control programs with pipe interface.
+For instance, <A target="_blank" href="http://www.dink.org/z/">Z! mp3 player</A> allows to
+<A target="_blank"  href="http://www.dink.org/z/pipecontrol.htm">control nearly all its functions</A>.
+So "*pause" command should be send to <tt>\pipe\zmp3</tt> pipe to pause playback.
+<br>I plan to add plugin for LBMIX program control to this library in the future.
+<h4>5.4. w95k_apm.dll library</h4>
+<p><B>ProcessAPM</B> - manages APM (advanced power management) subsystem in OS/2.
+<br>This plugin allows to power off your box (POWER_OFF) or suspend it
+(STANDBY or SUSPEND).
+<br>Plugin requires OS/2 APM drivers to be installed (they are shipped with the system).
+Also your hardware must support APM.
+<h4>5.5. w95k_sem.dll library</h4>
+<p><B>SemPoster</B> - posts an OS/2 event semaphore.
+<br>This plugin sends an OS/2 event semaphore with name specified by user.
+For instance, it may be used to call "WarpButton" of the SysTray program
+(semaphore name is <tt>\SEM32\SYSTRAY\WARPBTN</tt>).
+<h3>6. Additional utilities</h3>
+<p>
+The "Win95Key &#8211;&gt; Tools" folder contains some utilities that can be useful.
+<br><br>
+"<B>Key Info</B>" - shows scancodes of pressed keys using OS/2 PM.<br>
+"<B>Keyboard DosMon* tester</B>" - shows scancodes of pressed keys using DosMonRead function.<br>
+"<B>Remove win95key &lt;2.xx dll</B>" - removes dlls from old (0.xx) versions of Win95Key.
+<h3>7. Authors</h3>
+Win95Key: <A href="mailto:vik@avi.kiev.ua?Subject=w95k;v3">Viktor Remennik</A>.
+<br>PM Conf, KBDfix, APM plugin, PIPE Plugin and some Win95Key additions: <A href="mailto:samm@os2.ru">Alex Samorukov</A>
+<br>SEM plugin, PCRE switchto plugin and some Win95Key changes: <A href="mailto:nickk@nm.ru">nickk</A>
+<h3>8. Special thanks to</h3>
+Samuel Audet (guardia@cam.org) for original idea<br>
+Dmitry Ban for event processing idea and translation of this text<br>
+Sergey Yevtushenko for help with WarpCenter's sizes<br>
+Stangl Roman (rstangl@vnet.ibm.com) - for APM/OS2 toolkit.<br>
+Vadim Yegorov (vy@org.vrn.ru) - for <A href="http://www.vsu.ru/~vy" target="_blank">PCRE port</A>.
+<h3>9. Changes</h3>
+<A href="changelist.txt">changelist.txt</A> contains the list of changes.
+
+

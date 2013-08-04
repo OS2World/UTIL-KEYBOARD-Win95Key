@@ -1,0 +1,4 @@
+Plugin Volume=Sends pipe to \pipe\win95key,2
+HELPTEXT=This plugin send text to pipe.^Input string which you want to send
+TYPE=INPUTFIELD,DESCR=Text to send:, MANDATORY=1, VALUE='', DRAG=0
+TYPE=SELECTOR,DESCR=Pipe Name, MANDATORY=1, VALUE=\pipe\win95key,VALUE0=3,VALUES=\pipe\win95key|\pipe\zmp3|\pipe\lbmix

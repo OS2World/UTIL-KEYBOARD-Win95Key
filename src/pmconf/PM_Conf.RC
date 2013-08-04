@@ -1,0 +1,7 @@
+ICON 1  samm.ICO 
+#define PMEXE_TIMEOUT_INTERVAL   7
+#define PMEXE_HIDE_AFTER_LOAD     1
+#define PMEXE_MIN_VERSION_LEVEL 200
+rcinclude "splash.rc"
+bitmap PMEXE_BITMAP_ID splash.bmp 
+
