@@ -1,0 +1,4 @@
+#include "../w95k.h"
+
+ICON       1 PRELOAD error.ico
+

@@ -1,0 +1,7 @@
+#include <os2.h>
+
+ICON       1 PRELOAD plugintest.ico
+
+
+
+

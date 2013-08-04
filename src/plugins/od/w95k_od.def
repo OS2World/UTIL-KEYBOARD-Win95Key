@@ -1,0 +1,9 @@
+LIBRARY W95K_OD
+
+DESCRIPTION 'Win95Key plugin dll for Object Desktop. (C) vik@avi.kiev.ua'
+
+PROTMODE
+
+
+EXPORTS
+	SwitchToVirtualDesktop	@1

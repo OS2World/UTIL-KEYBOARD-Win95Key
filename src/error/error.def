@@ -1,0 +1,11 @@
+NAME    error   WINDOWAPI
+
+DESCRIPTION 'Error. (C) vik@avi.kiev.ua.'
+
+DATA    MULTIPLE
+
+STACKSIZE   32768
+HEAPSIZE    327680
+
+PROTMODE
+

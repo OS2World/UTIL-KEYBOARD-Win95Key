@@ -1,0 +1,11 @@
+NAME    Win95Key   WINDOWAPI
+
+DESCRIPTION 'Win95Key - extended keyboard support. (C) vik@avi.kiev.ua.'
+
+DATA    MULTIPLE
+
+STACKSIZE   32768
+HEAPSIZE    327680
+
+PROTMODE
+

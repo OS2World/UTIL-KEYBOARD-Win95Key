@@ -1,0 +1,39 @@
+#include "../w95k.h"
+
+ICON       1 PRELOAD w95k_exe.ico
+
+
+MENU 1 PRELOAD
+BEGIN
+	SUBMENU "~File", 110
+	BEGIN
+		MENUITEM "~Re-read configuration", MENU_REREADCFG
+		MENUITEM "Use key ~presses instead releases", MENU_PRESS, 0, MIA_NODISMISS
+		MENUITEM "~Hide in task list", MENU_HIDE, 0, MIA_NODISMISS
+		MENUITEM SEPARATOR
+		MENUITEM "E~xit...", MENU_EXIT
+	END
+
+	SUBMENU "~Help", 113
+	BEGIN
+		MENUITEM "~About", MENU_ABOUT
+	END
+END
+
+
+ACCELTABLE 1 PRELOAD
+BEGIN
+		
+	"H",	MENU_HIDE,		ALT
+	"P",	MENU_PRESS,		ALT
+	"R",	MENU_REREADCFG,	ALT
+	"X",	MENU_EXIT,		ALT
+	"A",	MENU_ABOUT,		ALT
+	"h",	MENU_HIDE,		ALT
+	"p",	MENU_PRESS,		ALT
+	"r",	MENU_REREADCFG,	ALT
+	"x",	MENU_EXIT,		ALT
+	"a",	MENU_ABOUT,		ALT
+END
+
+

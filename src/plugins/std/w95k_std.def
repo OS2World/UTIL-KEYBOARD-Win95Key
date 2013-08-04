@@ -1,0 +1,15 @@
+LIBRARY W95K_STD
+
+DESCRIPTION 'Win95Key std plugin dll. (C) vik@avi.kiev.ua'
+
+PROTMODE
+
+EXPORTS
+	SwitchTo		@1
+	WindowList		@2
+	DesktopMenu		@3
+	ContextMenu		@4
+	WarpCenterMenu		@5
+	OpenObject		@6
+	Volume			@7
+	MinimizeAll		@8

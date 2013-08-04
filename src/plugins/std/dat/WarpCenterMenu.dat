@@ -1,0 +1,3 @@
+Plugin WarpCenterMenu=Shows the WarpCenter's menus
+HELPTEXT=Describes action to perform.|Allowed values are :| |  MENU - Show WarpCenter's OS/2WARP menu|  WINDOWLIST- Show WarpCenter's window list|  LOCKUP Desktop lockup|  FIND Find an object|  SHUTDOWN Warpcenter's system shutdown|  INFO Switch WarpCenter's information pane|  TRAYS WarpCenter's trays select menu|  CLOCK Switch WarpCenter's clock mode|  PROPERTIES WarpCenter's properties
+TYPE=SELECTOR,DESCR=Action, MANDATORY=1, VALUE=MENU,VALUE0=9,VALUES=MENU|WINDOWLIST|LOCKUP|FIND|SHUTDOWN|INFO|TRAYS|CLOCK|PROPERTIES 

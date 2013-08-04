@@ -1,0 +1,3 @@
+Plugin SwitchTo=Switch to (bring up) window
+HELPTEXT=
+TYPE=INPUTFIELD,DESCR=Title of the window, MANDATORY=1, VALUE=''

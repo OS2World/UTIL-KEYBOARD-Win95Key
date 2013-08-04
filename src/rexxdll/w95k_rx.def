@@ -1,0 +1,9 @@
+LIBRARY Win95K_rx
+DESCRIPTION 'Win95Key foo for rexx (C) vik@avi.kiev.ua'
+DATA MULTIPLE NONSHARED
+PROTMODE
+STACKSIZE   32768
+HEAPSIZE    8192
+EXPORTS
+	w95kQueryOneScancode
+

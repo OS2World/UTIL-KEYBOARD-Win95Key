@@ -1,0 +1,15 @@
+#include <os2.h>
+
+ICON       1 PRELOAD showmousepos.ico
+
+MENU 100
+BEGIN
+	MENUITEM "~Move", 901
+	MENUITEM "~Quit", 902
+	MENUITEM SEPARATOR
+	MENUITEM "~About", 903
+END
+
+
+
+

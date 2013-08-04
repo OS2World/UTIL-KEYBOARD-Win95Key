@@ -1,0 +1,7 @@
+LIBRARY Win95Key
+DESCRIPTION 'Win95Key hook dll. (C) vik@avi.kiev.ua'
+EXPORTS
+  w95kRegisterTarget @1
+  w95kHook           @2
+
+

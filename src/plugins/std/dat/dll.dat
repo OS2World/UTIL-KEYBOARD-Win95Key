@@ -1,0 +1,8 @@
+Plugin DLL=Standard plugin library,7
+SwitchTo=2
+WindowList=3
+DesktopMenu=4
+ContextMenu=5
+WarpCenterMenu=6
+OpenObject=7
+Volume=8
