@@ -9,7 +9,7 @@ LICENSE
 
 COMPILE TOOLS
 ===============
-* 
+* GNU GPL V2
 
 AUTHORS
 ===============
